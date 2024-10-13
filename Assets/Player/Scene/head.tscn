@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://yec6udi84jx"]
+
+[ext_resource type="Shader" path="res://Assets/Player/Shaders/Lookup.gdshader" id="1_aokbr"]
+[ext_resource type="Script" path="res://head.gd" id="1_rg64u"]
+[ext_resource type="Texture2D" uid="uid://dsql0hkijfjqr" path="res://Assets/Player/Sprites/skull_skin.png" id="2_vgii2"]
+[ext_resource type="Texture2D" uid="uid://cvlvflj4yepuq" path="res://Assets/Player/Sprites/skull.png" id="3_abv1e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dy511"]
+size = Vector2(10, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dljg"]
+shader = ExtResource("1_aokbr")
+shader_parameter/SkinDimension = Vector2(16, 16)
+shader_parameter/Skin = ExtResource("2_vgii2")
+
+[node name="Head" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_rg64u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dy511")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_3dljg")
+scale = Vector2(5, 5)
+texture = ExtResource("3_abv1e")
