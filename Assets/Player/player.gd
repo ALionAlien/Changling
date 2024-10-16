@@ -9,17 +9,21 @@ var HasHead : bool = true
 var facing_right : bool = true
 
 #jumping stuff
-var jump_velocity : float = -400.0
+var jump_velocity : float = -100.0
 var jump_available:bool = false
 var coyote_duration : float = 0.2
 var jump_buffer:bool = false
 @export var jump_buffer_duration : float = 0.2
 
 #movment constants
-const walk_speed : float = 250.0
-const run_speed : float = 320.0
+#const walk_speed : float = 250.0
+#const run_speed : float = 320.0
+const walk_speed : float = 62.5
+const run_speed : float = 80.0
 var walk_cycle : int = 0
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var ledge_drop_pushoff : int = 10
+#var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = 270
 @export_range(0,1) var acceleration = 0.1
 @export_range(0,1) var decceleration = 0.1
 
@@ -44,7 +48,7 @@ func _physics_process(delta):
 	animation_process()
 	
 	floor_constant_speed = true
-	set_floor_snap_length(10.0)
+	set_floor_snap_length(2.0)
 	
 	$LedgeGrabRight.disabled = Input.is_action_pressed("down") or character_state not in [CHARACTER_STATE.AIR, CHARACTER_STATE.WALLGRAB_RIGHT] or velocity.y < 0 or (character_state != CHARACTER_STATE.WALLGRAB_RIGHT and $TopCheck.is_colliding())
 	$LedgeGrabLeft.disabled = Input.is_action_pressed("down") or character_state not in [CHARACTER_STATE.AIR, CHARACTER_STATE.WALLGRAB_LEFT] or velocity.y < 0 or (character_state != CHARACTER_STATE.WALLGRAB_LEFT and $TopCheck.is_colliding())
@@ -63,10 +67,16 @@ func _physics_process(delta):
 					#character_state = CHARACTER_STATE.AIM
 			else:
 				character_state = CHARACTER_STATE.IDLE
-		elif character_state == CHARACTER_STATE.WALLGRAB_LEFT && not Input.is_action_pressed("right"):
-			velocity = Vector2(-50,0)
-		elif character_state == CHARACTER_STATE.WALLGRAB_RIGHT && not Input.is_action_pressed("left"):
-			velocity = Vector2(50,0)
+		elif character_state == CHARACTER_STATE.WALLGRAB_LEFT:
+			if not Input.is_action_pressed("right"):
+				velocity = Vector2(-1,0)
+			if Input.is_action_just_pressed("down"):
+				velocity = Vector2(ledge_drop_pushoff,0)
+		elif character_state == CHARACTER_STATE.WALLGRAB_RIGHT:
+			if not Input.is_action_pressed("left"):
+				velocity = Vector2(1,0)
+			if Input.is_action_just_pressed("down"):
+				velocity = Vector2((ledge_drop_pushoff*-1),0)
 		#velocity.y += 2 * delta
 		jump_available = true
 		coyote_timer.stop()
@@ -78,7 +88,12 @@ func _physics_process(delta):
 			if coyote_timer.is_stopped():
 				coyote_timer.start(coyote_duration)
 		character_state = CHARACTER_STATE.AIR
-		velocity.y += gravity * delta
+		if Input.is_action_pressed("jump") && velocity.y < -66:
+			print("fall")
+			velocity.y += (gravity-110) * delta
+		else:
+			velocity.y += (gravity+110) * delta
+			print("not")
 	
 	if not character_state in [CHARACTER_STATE.AIM,CHARACTER_STATE.THROW]:
 		if Input.is_action_just_pressed("jump"):
@@ -101,14 +116,6 @@ func _physics_process(delta):
 		elif velocity.x < 0:
 			facing_right = false
 	
-	
-	if character_state == CHARACTER_STATE.AIM:
-		if Input.is_action_just_pressed("right"):
-			facing_right = true
-			character_state = CHARACTER_STATE.THROW
-		if Input.is_action_just_pressed("left"):
-			facing_right = false
-			character_state = CHARACTER_STATE.THROW
 	move_and_slide()
 
 
@@ -128,21 +135,20 @@ func animation_process():
 			animation_player.seek(walk_cycle,false,false)
 		CHARACTER_STATE.AIR:
 			var jump_frame : int = 0
-			if (velocity.y < -300):
+			if (velocity.y < -100):
 				jump_frame = 0
-			elif (velocity.y >= -300) && (velocity.y < -200):
+			elif (velocity.y >= -100) && (velocity.y < -66):
 				jump_frame = 1
-			elif (velocity.y >= -200) && (velocity.y < -100):
+			elif (velocity.y >= -66) && (velocity.y < -33):
 				jump_frame = 2
-			elif (velocity.y >= -100) && (velocity.y < 0):
+			elif (velocity.y >= -33) && (velocity.y < 0):
 				jump_frame = 3
-			elif (velocity.y >= 0) && (velocity.y < 100):
+			elif (velocity.y >= 0) && (velocity.y < 33):
 				jump_frame = 4
-			elif (velocity.y >= 100) && (velocity.y < 200):
+			elif (velocity.y >= 33) && (velocity.y < 66):
 				jump_frame = 5
 			else:
 				jump_frame = 6
-			print(jump_frame)
 			
 			if facing_right:
 				animation_player.play("JumpRight")

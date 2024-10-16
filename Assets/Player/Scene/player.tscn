@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://b4u3c4wgip3e6" path="res://Assets/Player/Sprites/skull_skin_mask.png" id="8_8fli6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hacxp"]
-radius = 4.05
-height = 15.3
+radius = 3.5
+height = 15.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtyka"]
 size = Vector2(1, 0)
@@ -971,15 +971,8 @@ shader_parameter/mask = SubResource("ViewportTexture_7mew4")
 script = ExtResource("1_f2etx")
 
 [node name="Body" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
 shape = SubResource("CapsuleShape2D_hacxp")
-
-[node name="ColorRect" type="ColorRect" parent="Body"]
-visible = false
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 4.0
-offset_bottom = 8.0
-color = Color(0.827451, 0.486275, 1, 1)
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -990,11 +983,11 @@ wait_time = 0.3
 one_shot = true
 
 [node name="LedgeGrabRight" type="CollisionShape2D" parent="."]
-position = Vector2(4.5, -7)
+position = Vector2(4, -7)
 shape = SubResource("RectangleShape2D_mtyka")
 
 [node name="LedgeGrabLeft" type="CollisionShape2D" parent="."]
-position = Vector2(-4.5, -7)
+position = Vector2(-4, -7)
 shape = SubResource("RectangleShape2D_mtyka")
 
 [node name="TopCheck" type="ShapeCast2D" parent="."]
@@ -1005,12 +998,12 @@ target_position = Vector2(0, 0)
 [node name="WallcheckRight" type="ShapeCast2D" parent="."]
 position = Vector2(0, -6.07)
 shape = SubResource("RectangleShape2D_vj1gm")
-target_position = Vector2(2.145, 0)
+target_position = Vector2(1, 0)
 
 [node name="WallcheckLeft" type="ShapeCast2D" parent="."]
 position = Vector2(0, -6.07)
 shape = SubResource("RectangleShape2D_vj1gm")
-target_position = Vector2(-2.07, 0)
+target_position = Vector2(-2, 0)
 
 [node name="Floorcheck" type="RayCast2D" parent="."]
 scale = Vector2(0.51, 0.51)
