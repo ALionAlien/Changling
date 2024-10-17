@@ -46,7 +46,7 @@ var character_state:int = CHARACTER_STATE.IDLE:
 
 func _physics_process(delta):
 	animation_process()
-	#sfvobnsfo
+	#sfvo
 	
 	floor_constant_speed = true
 	set_floor_snap_length(2.0)
