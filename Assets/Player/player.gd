@@ -92,6 +92,7 @@ func _physics_process(delta):
 			velocity.y += (gravity-110) * delta
 		else:
 			velocity.y += (gravity+110) * delta
+			#sjbv
 	
 	if not character_state in [CHARACTER_STATE.AIM,CHARACTER_STATE.THROW]:
 		if Input.is_action_just_pressed("jump"):
