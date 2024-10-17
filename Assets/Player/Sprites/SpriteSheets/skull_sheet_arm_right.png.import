@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsjjvyp8vpytm"
-path="res://.godot/imported/skull_idle.png-45743d220e2ef4b6a86cdbd08bb50673.ctex"
+uid="uid://cl41qqd0o3atm"
+path="res://.godot/imported/skull_sheet_arm_right.png-5dd13663d736fd4a84ae52732c25953b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Sprites/skull_idle.png"
-dest_files=["res://.godot/imported/skull_idle.png-45743d220e2ef4b6a86cdbd08bb50673.ctex"]
+source_file="res://Assets/Player/Sprites/SpriteSheets/skull_sheet_arm_right.png"
+dest_files=["res://.godot/imported/skull_sheet_arm_right.png-5dd13663d736fd4a84ae52732c25953b.ctex"]
 
 [params]
 

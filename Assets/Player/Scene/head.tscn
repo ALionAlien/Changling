@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://yec6udi84jx"]
 
-[ext_resource type="Shader" path="res://Assets/Player/Shaders/Lookup.gdshader" id="1_aokbr"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Lookup.gdshader" id="1_aokbr"]
 [ext_resource type="Script" path="res://head.gd" id="1_rg64u"]
-[ext_resource type="Texture2D" uid="uid://dsql0hkijfjqr" path="res://Assets/Player/Sprites/skull_skin.png" id="2_vgii2"]
-[ext_resource type="Texture2D" uid="uid://cvlvflj4yepuq" path="res://Assets/Player/Sprites/skull.png" id="3_abv1e"]
+[ext_resource type="Texture2D" uid="uid://dsql0hkijfjqr" path="res://Assets/Player/Sprites/Skins/skull_skin.png" id="2_vgii2"]
+[ext_resource type="Texture2D" path="res://Assets/Player/Sprites/skull.png" id="3_abv1e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dy511"]
 size = Vector2(10, 10)

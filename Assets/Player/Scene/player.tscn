@@ -1,13 +1,13 @@
 [gd_scene load_steps=33 format=3 uid="uid://dbu5jtybfchab"]
 
 [ext_resource type="Script" path="res://Assets/Player/player.gd" id="1_f2etx"]
-[ext_resource type="Shader" path="res://Assets/Player/Shaders/Lookup.gdshader" id="1_r8av6"]
-[ext_resource type="Texture2D" uid="uid://bjwvdg6pk5pex" path="res://Assets/Player/Sprites/skull_sheet_torso.png" id="3_k1g36"]
-[ext_resource type="Texture2D" uid="uid://dsql0hkijfjqr" path="res://Assets/Player/Sprites/skull_skin.png" id="3_yp5rm"]
-[ext_resource type="Texture2D" uid="uid://ce6hfivwktikm" path="res://Assets/Player/Sprites/skull_sheet_leg_left.png" id="4_mheif"]
-[ext_resource type="Shader" path="res://Assets/Player/Shaders/alpha_mask.gdshader" id="5_6iuwb"]
-[ext_resource type="Texture2D" uid="uid://c51xk70xlxvy6" path="res://Assets/Player/Sprites/skull_sheet_leg_right.png" id="5_mqj32"]
-[ext_resource type="Texture2D" uid="uid://b4u3c4wgip3e6" path="res://Assets/Player/Sprites/skull_skin_mask.png" id="8_8fli6"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Lookup.gdshader" id="2_oj6me"]
+[ext_resource type="Texture2D" uid="uid://bjwvdg6pk5pex" path="res://Assets/Player/Sprites/SpriteSheets/skull_sheet_torso.png" id="3_adxgk"]
+[ext_resource type="Texture2D" uid="uid://ce6hfivwktikm" path="res://Assets/Player/Sprites/SpriteSheets/skull_sheet_leg_left.png" id="4_cpobv"]
+[ext_resource type="Texture2D" uid="uid://c51xk70xlxvy6" path="res://Assets/Player/Sprites/SpriteSheets/skull_sheet_leg_right.png" id="5_i6s0x"]
+[ext_resource type="Shader" path="res://Assets/Shaders/alpha_mask.gdshader" id="6_ufjj4"]
+[ext_resource type="Texture2D" uid="uid://6on7htvv1d51" path="res://Assets/Player/Sprites/Skins/skull_skin3.png" id="7_ncldk"]
+[ext_resource type="Texture2D" uid="uid://b4u3c4wgip3e6" path="res://Assets/Player/Sprites/Masks/skull_skin_mask.png" id="8_32hg1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hacxp"]
 radius = 3.5
@@ -27,7 +27,7 @@ viewport_path = NodePath("Skin")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ksdns"]
 resource_local_to_scene = true
-shader = ExtResource("1_r8av6")
+shader = ExtResource("2_oj6me")
 shader_parameter/SkinDimension = Vector2(16, 16)
 shader_parameter/Skin = SubResource("ViewportTexture_fuxjb")
 
@@ -964,7 +964,7 @@ viewport_path = NodePath("BodyMask")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h5gij"]
 resource_local_to_scene = true
-shader = ExtResource("5_6iuwb")
+shader = ExtResource("6_ufjj4")
 shader_parameter/mask = SubResource("ViewportTexture_7mew4")
 
 [node name="Player" type="CharacterBody2D"]
@@ -1013,16 +1013,20 @@ target_position = Vector2(0, 20.905)
 z_index = 2
 texture_filter = 1
 material = SubResource("ShaderMaterial_ksdns")
-texture = ExtResource("3_k1g36")
+texture = ExtResource("3_adxgk")
 hframes = 13
 vframes = 15
 frame = 13
+
+[node name="LeftArmSprite" type="Sprite2D" parent="."]
+
+[node name="RightArmSprite" type="Sprite2D" parent="."]
 
 [node name="LeftLegSprite" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_ksdns")
-texture = ExtResource("4_mheif")
+texture = ExtResource("4_cpobv")
 hframes = 13
 vframes = 15
 frame = 91
@@ -1030,7 +1034,7 @@ frame = 91
 [node name="RightLegSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ksdns")
-texture = ExtResource("5_mqj32")
+texture = ExtResource("5_i6s0x")
 hframes = 13
 vframes = 15
 frame = 91
@@ -1054,11 +1058,11 @@ handle_input_locally = false
 size = Vector2i(16, 16)
 render_target_update_mode = 4
 
-[node name="Body" type="Sprite2D" parent="Skin"]
+[node name="CharacterSkin" type="Sprite2D" parent="Skin"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_h5gij")
 position = Vector2(8, 8)
-texture = ExtResource("3_yp5rm")
+texture = ExtResource("7_ncldk")
 
 [node name="BodyMask" type="SubViewport" parent="."]
 transparent_bg = true
@@ -1066,7 +1070,11 @@ size = Vector2i(16, 16)
 
 [node name="Mask" type="Sprite2D" parent="BodyMask"]
 position = Vector2(8, 8)
-texture = ExtResource("8_8fli6")
+texture = ExtResource("8_32hg1")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
 
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_jump_buffer_timeout"]

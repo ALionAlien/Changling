@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce6hfivwktikm"
-path="res://.godot/imported/skull_sheet_leg_left.png-5726192a4351aa1d320010861e6a44ac.ctex"
+uid="uid://cm7ej5n0kbluf"
+path="res://.godot/imported/skull_running_left_test.png-e82bce965a3a081f1663eac5e9b1e477.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Sprites/skull_sheet_leg_left.png"
-dest_files=["res://.godot/imported/skull_sheet_leg_left.png-5726192a4351aa1d320010861e6a44ac.ctex"]
+source_file="res://Assets/Player/Sprites/SpriteSheets/skull_running_left_test.png"
+dest_files=["res://.godot/imported/skull_running_left_test.png-e82bce965a3a081f1663eac5e9b1e477.ctex"]
 
 [params]
 

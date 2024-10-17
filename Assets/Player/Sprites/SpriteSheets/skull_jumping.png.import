@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6ol5wus3nids"
-path="res://.godot/imported/skull_skin_mask_test.png-3e8080253a7f7b8724d8c08ffdc6edfa.ctex"
+uid="uid://c2ta3rnmop44w"
+path="res://.godot/imported/skull_jumping.png-f7331cc2e047c0692eaa3c8384dca1c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Sprites/skull_skin_mask_test.png"
-dest_files=["res://.godot/imported/skull_skin_mask_test.png-3e8080253a7f7b8724d8c08ffdc6edfa.ctex"]
+source_file="res://Assets/Player/Sprites/SpriteSheets/skull_jumping.png"
+dest_files=["res://.godot/imported/skull_jumping.png-f7331cc2e047c0692eaa3c8384dca1c2.ctex"]
 
 [params]
 

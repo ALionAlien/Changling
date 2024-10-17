@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsql0hkijfjqr"
-path="res://.godot/imported/skull_skin.png-e72d5228d8784230b22193cce2851ead.ctex"
+uid="uid://c052ea7hlymfl"
+path="res://.godot/imported/skull_running_test.png-2509d490e61c24eb146af6466cc3508b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Sprites/skull_skin.png"
-dest_files=["res://.godot/imported/skull_skin.png-e72d5228d8784230b22193cce2851ead.ctex"]
+source_file="res://Assets/Player/Sprites/SpriteSheets/skull_running_test.png"
+dest_files=["res://.godot/imported/skull_running_test.png-2509d490e61c24eb146af6466cc3508b.ctex"]
 
 [params]
 

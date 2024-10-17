@@ -89,11 +89,9 @@ func _physics_process(delta):
 				coyote_timer.start(coyote_duration)
 		character_state = CHARACTER_STATE.AIR
 		if Input.is_action_pressed("jump") && velocity.y < -66:
-			print("fall")
 			velocity.y += (gravity-110) * delta
 		else:
 			velocity.y += (gravity+110) * delta
-			print("not")
 	
 	if not character_state in [CHARACTER_STATE.AIM,CHARACTER_STATE.THROW]:
 		if Input.is_action_just_pressed("jump"):
@@ -193,8 +191,10 @@ func enter_state(STATE:int)->void:
 				walk_cycle_clock.start()
 		CHARACTER_STATE.WALLGRAB_LEFT:
 			animation_player.play("GrabLeft")
+			facing_right = false
 		CHARACTER_STATE.WALLGRAB_RIGHT:
 			animation_player.play("GrabRight")
+			facing_right = true
 		CHARACTER_STATE.THROW:
 			$Throw.start()
 			if facing_right:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm5ulekgfiouk"
-path="res://.godot/imported/skull_headless_test.png-62d362298f4cb17810e773458f9e1bbd.ctex"
+uid="uid://byv722odlfij8"
+path="res://.godot/imported/skull_thrown_head.png-35a262e8b7ca2809ad5ab135e053fa72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Sprites/skull_headless_test.png"
-dest_files=["res://.godot/imported/skull_headless_test.png-62d362298f4cb17810e773458f9e1bbd.ctex"]
+source_file="res://Assets/Player/Sprites/SpriteSheets/skull_thrown_head.png"
+dest_files=["res://.godot/imported/skull_thrown_head.png-35a262e8b7ca2809ad5ab135e053fa72.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df6e3u705ts8r"
-path="res://.godot/imported/skull_skin2.png-c5b9b7c3b7e87d845ca40e5f9b47db01.ctex"
+uid="uid://c2uxhhqos5edj"
+path="res://.godot/imported/skull_idle_left.png-f4f26217b346487596d71901cfc510b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Sprites/skull_skin2.png"
-dest_files=["res://.godot/imported/skull_skin2.png-c5b9b7c3b7e87d845ca40e5f9b47db01.ctex"]
+source_file="res://Assets/Player/Sprites/SpriteSheets/skull_idle_left.png"
+dest_files=["res://.godot/imported/skull_idle_left.png-f4f26217b346487596d71901cfc510b9.ctex"]
 
 [params]
 

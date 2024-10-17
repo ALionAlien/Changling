@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4u3c4wgip3e6"
-path="res://.godot/imported/skull_skin_mask.png-d98688b38779011d72e92d623b4947a4.ctex"
+uid="uid://6ol5wus3nids"
+path="res://.godot/imported/skull_skin_mask_test.png-93a936a30f1804065b1d4e72ab42237b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/Sprites/skull_skin_mask.png"
-dest_files=["res://.godot/imported/skull_skin_mask.png-d98688b38779011d72e92d623b4947a4.ctex"]
+source_file="res://Assets/Player/Sprites/Masks/skull_skin_mask_test.png"
+dest_files=["res://.godot/imported/skull_skin_mask_test.png-93a936a30f1804065b1d4e72ab42237b.ctex"]
 
 [params]
 
