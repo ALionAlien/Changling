@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://ce6hfivwktikm" path="res://Assets/Player/Sprites/SpriteSheets/skull_sheet_leg_left.png" id="4_cpobv"]
 [ext_resource type="Texture2D" uid="uid://c51xk70xlxvy6" path="res://Assets/Player/Sprites/SpriteSheets/skull_sheet_leg_right.png" id="5_i6s0x"]
 [ext_resource type="Shader" path="res://Assets/Shaders/alpha_mask.gdshader" id="6_ufjj4"]
-[ext_resource type="Texture2D" uid="uid://6on7htvv1d51" path="res://Assets/Player/Sprites/Skins/skull_skin3.png" id="7_ncldk"]
+[ext_resource type="Texture2D" uid="uid://d1b5h2n64ha1a" path="res://Assets/Player/Sprites/Skins/skull_skin4.png" id="7_oiu2t"]
 [ext_resource type="Texture2D" uid="uid://b4u3c4wgip3e6" path="res://Assets/Player/Sprites/Masks/skull_skin_mask.png" id="8_32hg1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hacxp"]
-radius = 3.5
+radius = 3.9
 height = 15.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtyka"]
@@ -983,7 +983,7 @@ wait_time = 0.3
 one_shot = true
 
 [node name="LedgeGrabRight" type="CollisionShape2D" parent="."]
-position = Vector2(4, -7)
+position = Vector2(3, -7)
 shape = SubResource("RectangleShape2D_mtyka")
 
 [node name="LedgeGrabLeft" type="CollisionShape2D" parent="."]
@@ -1062,7 +1062,7 @@ render_target_update_mode = 4
 texture_filter = 1
 material = SubResource("ShaderMaterial_h5gij")
 position = Vector2(8, 8)
-texture = ExtResource("7_ncldk")
+texture = ExtResource("7_oiu2t")
 
 [node name="BodyMask" type="SubViewport" parent="."]
 transparent_bg = true
