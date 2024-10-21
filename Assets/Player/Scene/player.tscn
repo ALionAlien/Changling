@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dbu5jtybfchab"]
+[gd_scene load_steps=32 format=3 uid="uid://dbu5jtybfchab"]
 
 [ext_resource type="Script" path="res://Assets/Player/player.gd" id="1_f2etx"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Lookup.gdshader" id="2_oj6me"]
@@ -959,13 +959,15 @@ _data = {
 "WalkRight": SubResource("Animation_iuiwq")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7mew4"]
-viewport_path = NodePath("BodyMask")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h5gij"]
 resource_local_to_scene = true
 shader = ExtResource("6_ufjj4")
-shader_parameter/mask = SubResource("ViewportTexture_7mew4")
+shader_parameter/scale = null
+shader_parameter/fisheye_intensity = null
+shader_parameter/mask_scale = null
+shader_parameter/mask_intensity = null
+shader_parameter/scanline_intensity = null
+shader_parameter/brightness = null
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_f2etx")

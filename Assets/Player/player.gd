@@ -51,8 +51,8 @@ func _physics_process(delta):
 	floor_constant_speed = true
 	set_floor_snap_length(2.0)
 	
-	$LedgeGrabRight.disabled = Input.is_action_pressed("down") or character_state not in [CHARACTER_STATE.AIR, CHARACTER_STATE.WALLGRAB_RIGHT] or velocity.y < 0 or (character_state != CHARACTER_STATE.WALLGRAB_RIGHT and $TopCheck.is_colliding())
-	$LedgeGrabLeft.disabled = Input.is_action_pressed("down") or character_state not in [CHARACTER_STATE.AIR, CHARACTER_STATE.WALLGRAB_LEFT] or velocity.y < 0 or (character_state != CHARACTER_STATE.WALLGRAB_LEFT and $TopCheck.is_colliding())
+	$LedgeGrabRight.disabled = (not Input.is_action_pressed("right") and character_state != CHARACTER_STATE.WALLGRAB_RIGHT) or Input.is_action_pressed("down") or character_state not in [CHARACTER_STATE.AIR, CHARACTER_STATE.WALLGRAB_RIGHT] or velocity.y < 0 or (character_state != CHARACTER_STATE.WALLGRAB_RIGHT and $TopCheck.is_colliding())
+	$LedgeGrabLeft.disabled = (not Input.is_action_pressed("left") and character_state != CHARACTER_STATE.WALLGRAB_LEFT) or Input.is_action_pressed("down") or character_state not in [CHARACTER_STATE.AIR, CHARACTER_STATE.WALLGRAB_LEFT] or velocity.y < 0 or (character_state != CHARACTER_STATE.WALLGRAB_LEFT and $TopCheck.is_colliding())
 	
 	if character_state == CHARACTER_STATE.AIR:
 		check_ledge_grab()
