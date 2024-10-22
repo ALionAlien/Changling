@@ -9,7 +9,7 @@ var HasHead : bool = true
 var facing_right : bool = true
 
 #jumping stuff
-var jump_velocity : float = -100.0
+var jump_velocity : float = -400.0
 var jump_available:bool = false
 var coyote_duration : float = 0.2
 var jump_buffer:bool = false
@@ -18,12 +18,12 @@ var jump_buffer:bool = false
 #movment constants
 #const walk_speed : float = 250.0
 #const run_speed : float = 320.0
-const walk_speed : float = 62.5
-const run_speed : float = 80.0
+const walk_speed : float = 248.5
+const run_speed : float = 320.0
 var walk_cycle : int = 0
-var ledge_drop_pushoff : int = 10
-#var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var gravity = 270
+var ledge_drop_pushoff : int = 40
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+#var gravity = 270
 @export_range(0,1) var acceleration = 0.1
 @export_range(0,1) var decceleration = 0.1
 
@@ -49,7 +49,7 @@ func _physics_process(delta):
 	#sfvo
 	
 	floor_constant_speed = true
-	set_floor_snap_length(2.0)
+	set_floor_snap_length(8.0)
 	
 	$LedgeGrabRight.disabled = (not Input.is_action_pressed("right") and character_state != CHARACTER_STATE.WALLGRAB_RIGHT) or Input.is_action_pressed("down") or character_state not in [CHARACTER_STATE.AIR, CHARACTER_STATE.WALLGRAB_RIGHT] or velocity.y < 0 or (character_state != CHARACTER_STATE.WALLGRAB_RIGHT and $TopCheck.is_colliding())
 	$LedgeGrabLeft.disabled = (not Input.is_action_pressed("left") and character_state != CHARACTER_STATE.WALLGRAB_LEFT) or Input.is_action_pressed("down") or character_state not in [CHARACTER_STATE.AIR, CHARACTER_STATE.WALLGRAB_LEFT] or velocity.y < 0 or (character_state != CHARACTER_STATE.WALLGRAB_LEFT and $TopCheck.is_colliding())
@@ -59,9 +59,9 @@ func _physics_process(delta):
 	
 	if is_on_floor():
 		if not character_state in [CHARACTER_STATE.WALLGRAB_RIGHT, CHARACTER_STATE.WALLGRAB_LEFT, CHARACTER_STATE.THROW]:
-			if (abs(velocity.x) > 0 && abs(velocity.x) < (run_speed - 20.0)):
+			if (abs(velocity.x) > 0 && abs(velocity.x) < (run_speed - 80.0)):
 				character_state = CHARACTER_STATE.WALK
-			elif abs(velocity.x) >= (run_speed - 20.0):
+			elif abs(velocity.x) >= (run_speed - 80.0):
 				character_state = CHARACTER_STATE.RUN
 			#elif Input.is_action_pressed("down") && HasHead:
 				#if character_state != CHARACTER_STATE.AIM:
@@ -89,10 +89,10 @@ func _physics_process(delta):
 			if coyote_timer.is_stopped():
 				coyote_timer.start(coyote_duration)
 		character_state = CHARACTER_STATE.AIR
-		if Input.is_action_pressed("jump") && velocity.y < -66:
-			velocity.y += (gravity-110) * delta
+		if Input.is_action_pressed("jump") && velocity.y < -264:
+			velocity.y += (gravity-410) * delta
 		else:
-			velocity.y += (gravity+110) * delta
+			velocity.y += (gravity+410) * delta
 			#sjbv
 	
 	if not character_state in [CHARACTER_STATE.AIM,CHARACTER_STATE.THROW]:

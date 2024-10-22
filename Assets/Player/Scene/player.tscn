@@ -1,26 +1,25 @@
-[gd_scene load_steps=32 format=3 uid="uid://dbu5jtybfchab"]
+[gd_scene load_steps=30 format=3 uid="uid://dbu5jtybfchab"]
 
 [ext_resource type="Script" path="res://Assets/Player/player.gd" id="1_f2etx"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Lookup.gdshader" id="2_oj6me"]
 [ext_resource type="Texture2D" uid="uid://bjwvdg6pk5pex" path="res://Assets/Player/Sprites/SpriteSheets/skull_sheet_torso.png" id="3_adxgk"]
 [ext_resource type="Texture2D" uid="uid://ce6hfivwktikm" path="res://Assets/Player/Sprites/SpriteSheets/skull_sheet_leg_left.png" id="4_cpobv"]
 [ext_resource type="Texture2D" uid="uid://c51xk70xlxvy6" path="res://Assets/Player/Sprites/SpriteSheets/skull_sheet_leg_right.png" id="5_i6s0x"]
-[ext_resource type="Shader" path="res://Assets/Shaders/alpha_mask.gdshader" id="6_ufjj4"]
-[ext_resource type="Texture2D" uid="uid://d1b5h2n64ha1a" path="res://Assets/Player/Sprites/Skins/skull_skin4.png" id="7_oiu2t"]
+[ext_resource type="Texture2D" uid="uid://df6e3u705ts8r" path="res://Assets/Player/Sprites/Skins/skull_skin2.png" id="6_br37t"]
 [ext_resource type="Texture2D" uid="uid://b4u3c4wgip3e6" path="res://Assets/Player/Sprites/Masks/skull_skin_mask.png" id="8_32hg1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hacxp"]
-radius = 3.9
-height = 15.0
+radius = 15.8
+height = 60.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mtyka"]
-size = Vector2(1, 0)
+size = Vector2(4, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vqxdv"]
-size = Vector2(9.99, 0.99)
+size = Vector2(30, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vj1gm"]
-size = Vector2(5.405, 1.415)
+size = Vector2(3.705, 4)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fuxjb"]
 viewport_path = NodePath("Skin")
@@ -959,21 +958,11 @@ _data = {
 "WalkRight": SubResource("Animation_iuiwq")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h5gij"]
-resource_local_to_scene = true
-shader = ExtResource("6_ufjj4")
-shader_parameter/scale = null
-shader_parameter/fisheye_intensity = null
-shader_parameter/mask_scale = null
-shader_parameter/mask_intensity = null
-shader_parameter/scanline_intensity = null
-shader_parameter/brightness = null
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_f2etx")
 
 [node name="Body" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
+position = Vector2(-0.05, 3)
 shape = SubResource("CapsuleShape2D_hacxp")
 
 [node name="CoyoteTimer" type="Timer" parent="."]
@@ -985,49 +974,53 @@ wait_time = 0.3
 one_shot = true
 
 [node name="LedgeGrabRight" type="CollisionShape2D" parent="."]
-position = Vector2(3, -7)
+position = Vector2(15, -24.5)
 shape = SubResource("RectangleShape2D_mtyka")
 
 [node name="LedgeGrabLeft" type="CollisionShape2D" parent="."]
-position = Vector2(-4, -7)
+position = Vector2(-15, -24.5)
 shape = SubResource("RectangleShape2D_mtyka")
 
 [node name="TopCheck" type="ShapeCast2D" parent="."]
-position = Vector2(0, -7.53)
+position = Vector2(0, -32.365)
 shape = SubResource("RectangleShape2D_vqxdv")
 target_position = Vector2(0, 0)
 
 [node name="WallcheckRight" type="ShapeCast2D" parent="."]
-position = Vector2(0, -6.07)
+position = Vector2(0, -22)
 shape = SubResource("RectangleShape2D_vj1gm")
-target_position = Vector2(1, 0)
+target_position = Vector2(14.69, 0)
 
 [node name="WallcheckLeft" type="ShapeCast2D" parent="."]
-position = Vector2(0, -6.07)
+position = Vector2(0, -22)
 shape = SubResource("RectangleShape2D_vj1gm")
-target_position = Vector2(-2, 0)
+target_position = Vector2(-14.675, 0)
 
 [node name="Floorcheck" type="RayCast2D" parent="."]
 scale = Vector2(0.51, 0.51)
-target_position = Vector2(0, 20.905)
+target_position = Vector2(0, 73)
 
 [node name="TorsoSprite" type="Sprite2D" parent="."]
 z_index = 2
 texture_filter = 1
 material = SubResource("ShaderMaterial_ksdns")
+scale = Vector2(4, 4)
 texture = ExtResource("3_adxgk")
 hframes = 13
 vframes = 15
 frame = 13
 
 [node name="LeftArmSprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
 
 [node name="RightArmSprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
 
 [node name="LeftLegSprite" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_ksdns")
+scale = Vector2(4, 4)
 texture = ExtResource("4_cpobv")
 hframes = 13
 vframes = 15
@@ -1036,6 +1029,7 @@ frame = 91
 [node name="RightLegSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ksdns")
+scale = Vector2(4, 4)
 texture = ExtResource("5_i6s0x")
 hframes = 13
 vframes = 15
@@ -1062,9 +1056,8 @@ render_target_update_mode = 4
 
 [node name="CharacterSkin" type="Sprite2D" parent="Skin"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_h5gij")
 position = Vector2(8, 8)
-texture = ExtResource("7_oiu2t")
+texture = ExtResource("6_br37t")
 
 [node name="BodyMask" type="SubViewport" parent="."]
 transparent_bg = true
