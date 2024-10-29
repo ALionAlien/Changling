@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dbu5jtybfchab"]
+[gd_scene load_steps=33 format=3 uid="uid://dbu5jtybfchab"]
 
 [ext_resource type="Script" path="res://Assets/Player/player.gd" id="1_f2etx"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Lookup.gdshader" id="2_oj6me"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://ce6hfivwktikm" path="res://Assets/Player/Sprites/SpriteSheets/skull_sheet_leg_left.png" id="4_cpobv"]
 [ext_resource type="Texture2D" uid="uid://c51xk70xlxvy6" path="res://Assets/Player/Sprites/SpriteSheets/skull_sheet_leg_right.png" id="5_i6s0x"]
 [ext_resource type="Texture2D" uid="uid://df6e3u705ts8r" path="res://Assets/Player/Sprites/Skins/skull_skin2.png" id="6_br37t"]
-[ext_resource type="Texture2D" uid="uid://b4u3c4wgip3e6" path="res://Assets/Player/Sprites/Masks/skull_skin_mask.png" id="8_32hg1"]
+[ext_resource type="Shader" path="res://Assets/Shaders/alpha_mask.gdshader" id="6_ufjj4"]
+[ext_resource type="Texture2D" uid="uid://6ol5wus3nids" path="res://Assets/Player/Sprites/Masks/skull_skin_mask_test.png" id="7_ptiin"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hacxp"]
 radius = 15.8
@@ -958,6 +959,14 @@ _data = {
 "WalkRight": SubResource("Animation_iuiwq")
 }
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_ijqrg"]
+viewport_path = NodePath("BodyMask")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvq3x"]
+resource_local_to_scene = true
+shader = ExtResource("6_ufjj4")
+shader_parameter/mask = SubResource("ViewportTexture_ijqrg")
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_f2etx")
 
@@ -1056,6 +1065,7 @@ render_target_update_mode = 4
 
 [node name="CharacterSkin" type="Sprite2D" parent="Skin"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_cvq3x")
 position = Vector2(8, 8)
 texture = ExtResource("6_br37t")
 
@@ -1065,7 +1075,7 @@ size = Vector2i(16, 16)
 
 [node name="Mask" type="Sprite2D" parent="BodyMask"]
 position = Vector2(8, 8)
-texture = ExtResource("8_32hg1")
+texture = ExtResource("7_ptiin")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 

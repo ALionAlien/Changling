@@ -21,7 +21,7 @@ var jump_buffer:bool = false
 const walk_speed : float = 248.5
 const run_speed : float = 320.0
 var walk_cycle : int = 0
-var ledge_drop_pushoff : int = 40
+var ledge_drop_pushoff : int = 80
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #var gravity = 270
 @export_range(0,1) var acceleration = 0.1
@@ -135,17 +135,17 @@ func animation_process():
 			animation_player.seek(walk_cycle,false,false)
 		CHARACTER_STATE.AIR:
 			var jump_frame : int = 0
-			if (velocity.y < -100):
+			if (velocity.y < -300):
 				jump_frame = 0
-			elif (velocity.y >= -100) && (velocity.y < -66):
+			elif (velocity.y >= -300) && (velocity.y < -200):
 				jump_frame = 1
-			elif (velocity.y >= -66) && (velocity.y < -33):
+			elif (velocity.y >= -200) && (velocity.y < -100):
 				jump_frame = 2
-			elif (velocity.y >= -33) && (velocity.y < 0):
+			elif (velocity.y >= -100) && (velocity.y < 0):
 				jump_frame = 3
-			elif (velocity.y >= 0) && (velocity.y < 33):
+			elif (velocity.y >= 0) && (velocity.y < 100):
 				jump_frame = 4
-			elif (velocity.y >= 33) && (velocity.y < 66):
+			elif (velocity.y >= 100) && (velocity.y < 200):
 				jump_frame = 5
 			else:
 				jump_frame = 6
