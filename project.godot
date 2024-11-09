@@ -21,10 +21,7 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1120
-window/size/viewport_height=640
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_width"
 
 [editor]
 
@@ -78,3 +75,7 @@ morph={
 2d_render/layer_1="Player"
 2d_render/layer_2="Head"
 2d_render/layer_3="Level"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
